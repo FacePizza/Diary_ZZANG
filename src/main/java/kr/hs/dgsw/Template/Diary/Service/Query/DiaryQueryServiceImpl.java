@@ -14,6 +14,11 @@ public class DiaryQueryServiceImpl implements DiaryQueryService{
     private final DiaryQueryRepository diaryQueryRepository;
 
     @Override
+    public DiaryResponse findDiaryById(Long id) {
+        return diaryQueryRepository.getDiaryById(id);
+    }
+
+    @Override
     public List<DiaryResponse> findDiaryList() {
         return diaryQueryRepository.findDiaryList();
     }

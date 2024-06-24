@@ -37,8 +37,8 @@ public class DiaryController {
     }
 
     @GetMapping
-    public ResponseEntity<DiaryDTO> get(Long id) {
-        DiaryDTO _dto = diaryService.get(id);
+    public ResponseEntity<DiaryResponse> get(Long id) {
+        DiaryResponse _dto = queryService.findDiaryById(id);
         if (_dto == null) {
             return ResponseEntity.notFound().build();
         }
@@ -56,6 +56,12 @@ public class DiaryController {
     @DeleteMapping
     public ResponseEntity<String> remove(Long id) {
         diaryService.remove(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/like")
+    public ResponseEntity<String> like(Long id) {
+        diaryService.like(id);
         return ResponseEntity.ok().build();
     }
 }

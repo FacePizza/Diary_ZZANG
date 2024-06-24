@@ -19,6 +19,14 @@ public class DiaryQueryRepositoryImpl implements DiaryQueryRepository{
     private final JPAQueryFactory queryFactory;
 
     @Override
+    public DiaryResponse getDiaryById(Long id) {
+        return queryFactory.select(diaryConstructor())
+                .from(diaryEntity)
+                .where(diaryEntity.id.eq(id))
+                .fetchOne();
+    }
+
+    @Override
     public List<DiaryResponse> findDiaryList() {
         return queryFactory.select(diaryConstructor())
                 .from(commentEntity)
@@ -44,4 +52,6 @@ public class DiaryQueryRepositoryImpl implements DiaryQueryRepository{
                 commentEntity.comment
         );
     }
+
+
 }
