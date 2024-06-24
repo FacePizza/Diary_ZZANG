@@ -6,6 +6,8 @@ import kr.hs.dgsw.Template.Diary.Repository.DiaryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class DiaryServiceImpl implements DiaryService {
@@ -17,5 +19,11 @@ public class DiaryServiceImpl implements DiaryService {
         DiaryEntity _save = diaryRepository.save(dto.toEntity());
 
         return _save.getId();
+    }
+
+    @Override
+    public List<DiaryDTO> getList() {
+        List<DiaryEntity> _result = diaryRepository.findAll();
+        return _result.stream().map( DiaryEntity::toDTO ).toList();
     }
 }
