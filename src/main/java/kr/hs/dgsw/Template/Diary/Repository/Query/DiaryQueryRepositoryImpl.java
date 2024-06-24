@@ -29,8 +29,8 @@ public class DiaryQueryRepositoryImpl implements DiaryQueryRepository{
     @Override
     public List<DiaryResponse> findDiaryList() {
         return queryFactory.select(diaryConstructor())
-                .from(commentEntity)
-                .leftJoin(diaryEntity)
+                .from(diaryEntity)
+                .leftJoin(commentEntity)
                 .on(commentEntity.diaryId.eq(diaryEntity.id))
                 .fetchJoin()
                 .orderBy(diaryEntity.id.asc())
