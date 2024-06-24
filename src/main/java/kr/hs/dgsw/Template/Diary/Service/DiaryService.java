@@ -11,4 +11,5 @@ public interface DiaryService {
     DiaryDTO get(Long id);
     void modify(DiaryDTO dto);
     void remove(Long id);
+    void like(Long id);
 }

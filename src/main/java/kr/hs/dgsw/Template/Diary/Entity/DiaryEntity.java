@@ -44,6 +44,10 @@ public class DiaryEntity extends BaseEntity {
         this.content = content;
     }
 
+    public void plusLikes() {
+        this.likes++;
+    }
+
     public DiaryDTO toDTO() {
         DiaryDTO _dto = DiaryDTO
                 .builder()

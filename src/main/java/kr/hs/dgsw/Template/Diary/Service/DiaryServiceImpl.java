@@ -50,4 +50,19 @@ public class DiaryServiceImpl implements DiaryService {
     public void remove(Long id) {
         diaryRepository.deleteById(id);
     }
+
+    @Override
+    public void like(Long id) {
+        DiaryEntity _entity = diaryRepository.findById(id).orElseThrow(() -> {
+            throw new RuntimeException("문제 발생");
+        });
+
+       _entity.plusLikes();
+
+       diaryRepository.save(_entity);
+
+
+
+
+    }
 }
