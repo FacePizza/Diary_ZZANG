@@ -36,8 +36,8 @@ public class DiaryController {
         return ResponseEntity.ok(queryService.findDiaryList());
     }
 
-    @GetMapping
-    public ResponseEntity<DiaryResponse> get(Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<DiaryResponse> get(@PathVariable Long id) {
         DiaryResponse _dto = queryService.findDiaryById(id);
         if (_dto == null) {
             return ResponseEntity.notFound().build();

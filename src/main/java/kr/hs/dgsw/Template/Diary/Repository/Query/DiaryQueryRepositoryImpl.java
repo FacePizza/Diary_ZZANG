@@ -22,6 +22,8 @@ public class DiaryQueryRepositoryImpl implements DiaryQueryRepository{
     public DiaryResponse getDiaryById(Long id) {
         return queryFactory.select(diaryConstructor())
                 .from(diaryEntity)
+                .leftJoin(commentEntity)
+                .on(diaryEntity.id.eq(commentEntity.diaryId))
                 .where(diaryEntity.id.eq(id))
                 .fetchOne();
     }
