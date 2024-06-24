@@ -1,6 +1,6 @@
-package kr.hs.dgsw.Template.comment.dto;
+package kr.hs.dgsw.Template.Comment.DTO;
 
-import kr.hs.dgsw.Template.comment.entity.CommentEntity;
+import kr.hs.dgsw.Template.Comment.Entity.CommentEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

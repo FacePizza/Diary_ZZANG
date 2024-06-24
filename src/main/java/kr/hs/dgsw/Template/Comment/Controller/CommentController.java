@@ -1,7 +1,7 @@
-package kr.hs.dgsw.Template.comment.controller;
+package kr.hs.dgsw.Template.Comment.Controller;
 
-import kr.hs.dgsw.Template.comment.dto.CommentDTO;
-import kr.hs.dgsw.Template.comment.service.CommentService;
+import kr.hs.dgsw.Template.Comment.DTO.CommentDTO;
+import kr.hs.dgsw.Template.Comment.Service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,8 +13,8 @@ public class CommentController {
     private final CommentService commentService;
 
     @PostMapping
-    public void register(CommentDTO dto){
-        commentService.register(dto);
+    public Long register(@RequestBody CommentDTO dto){
+        return commentService.register(dto);
     }
 
     @DeleteMapping("/{id}")

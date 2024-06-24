@@ -1,7 +1,7 @@
-package kr.hs.dgsw.Template.Diary.Service.query;
+package kr.hs.dgsw.Template.Diary.Service.Query;
 
 import kr.hs.dgsw.Template.Diary.DTO.DiaryResponse;
-import kr.hs.dgsw.Template.Diary.Repository.query.DiaryQueryRepository;
+import kr.hs.dgsw.Template.Diary.Repository.Query.DiaryQueryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

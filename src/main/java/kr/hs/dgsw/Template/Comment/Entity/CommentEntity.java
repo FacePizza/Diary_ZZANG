@@ -1,4 +1,4 @@
-package kr.hs.dgsw.Template.comment.entity;
+package kr.hs.dgsw.Template.Comment.Entity;
 
 import jakarta.persistence.*;
 import kr.hs.dgsw.Template.Shared.Entity.BaseEntity;

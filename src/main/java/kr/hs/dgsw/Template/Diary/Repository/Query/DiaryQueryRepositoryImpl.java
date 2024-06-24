@@ -1,4 +1,4 @@
-package kr.hs.dgsw.Template.Diary.Repository.query;
+package kr.hs.dgsw.Template.Diary.Repository.Query;
 
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
@@ -10,13 +10,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 import static kr.hs.dgsw.Template.Diary.Entity.QDiaryEntity.diaryEntity;
-import static kr.hs.dgsw.Template.comment.entity.QCommentEntity.commentEntity;
+import static kr.hs.dgsw.Template.Comment.Entity.QCommentEntity.commentEntity;
 
 @RequiredArgsConstructor
 @Repository
 public class DiaryQueryRepositoryImpl implements DiaryQueryRepository{
 
-    private JPAQueryFactory queryFactory;
+    private final JPAQueryFactory queryFactory;
 
     @Override
     public List<DiaryResponse> findDiaryList() {

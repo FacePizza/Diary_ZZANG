@@ -1,8 +1,8 @@
-package kr.hs.dgsw.Template.comment.service;
+package kr.hs.dgsw.Template.Comment.Service;
 
 import kr.hs.dgsw.Template.Diary.Repository.DiaryRepository;
-import kr.hs.dgsw.Template.comment.dto.CommentDTO;
-import kr.hs.dgsw.Template.comment.repository.CommentRepository;
+import kr.hs.dgsw.Template.Comment.DTO.CommentDTO;
+import kr.hs.dgsw.Template.Comment.Repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +14,9 @@ public class CommentServiceImpl implements CommentService{
     private final DiaryRepository diaryRepository;
 
     @Override
-    public void register(CommentDTO dto) {
+    public Long register(CommentDTO dto) {
         if(diaryRepository.existsById(dto.getDiaryId())){
-            commentRepository.save(CommentDTO.toEntity(dto));
+            return commentRepository.save(CommentDTO.toEntity(dto)).getId();
         }
         else{
             throw new RuntimeException("diary not found");
