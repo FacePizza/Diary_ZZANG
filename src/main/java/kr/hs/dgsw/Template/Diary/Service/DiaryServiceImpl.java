@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,5 +26,28 @@ public class DiaryServiceImpl implements DiaryService {
     public List<DiaryDTO> getList() {
         List<DiaryEntity> _result = diaryRepository.findAll();
         return _result.stream().map( DiaryEntity::toDTO ).toList();
+    }
+
+    @Override
+    public DiaryDTO get(Long id) {
+       Optional<DiaryEntity> _result = diaryRepository.findById(id);
+       return _result.map(DiaryEntity::toDTO).orElse(null);
+    }
+
+    @Override
+    public void modify(DiaryDTO dto) {
+        Optional<DiaryEntity> _result = diaryRepository.findById(dto.getId());
+
+        if (_result.isPresent()) {
+            DiaryEntity _entity = _result.get();
+            _entity.changeTitle(dto.getTitle());
+            _entity.changeContent(dto.getContent());
+            diaryRepository.save(_entity);
+        }
+    }
+
+    @Override
+    public void remove(Long id) {
+        diaryRepository.deleteById(id);
     }
 }
