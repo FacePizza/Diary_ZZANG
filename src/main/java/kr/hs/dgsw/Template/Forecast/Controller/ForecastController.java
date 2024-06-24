@@ -18,7 +18,7 @@ import java.net.URL;
 
 @RestController
 @RequestMapping("/forecast")
-@Tag(name = "날씨 불러오기")
+@Tag(name = "날씨")
 public class ForecastController {
     @GetMapping("/get")
     public Weather get() {
@@ -48,6 +48,7 @@ public class ForecastController {
         return Weather.getWeather(weatherCode);
 
     }
+
 
     private InputStream getNetworkConnection(HttpURLConnection urlConnection) throws IOException {
         urlConnection.setConnectTimeout(3000);
