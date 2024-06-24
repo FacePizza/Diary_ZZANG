@@ -8,9 +8,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,5 +28,11 @@ public class DiaryController {
         Long _register = diaryService.register( _dto );
 
         return ResponseEntity.status(HttpStatus.CREATED).body( _register.toString() );
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<DiaryDTO>> getAll() {
+        List<DiaryDTO> _list = diaryService.getList();
+        return ResponseEntity.ok(_list);
     }
 }

@@ -20,13 +20,13 @@ public class DiaryEntity extends BaseEntity {
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     Long id;
 
-    @Column( nullable = false )
+    @Column( length = 100, nullable = false )
     private String title;
 
-    @Column( nullable = false )
+    @Column( length = 2000, nullable = false )
     private String content;
 
-    @Column( nullable = false )
+    @Column( length = 50, nullable = false )
     private String writer;
 
     @Column( nullable = false )
@@ -35,6 +35,7 @@ public class DiaryEntity extends BaseEntity {
     public DiaryDTO toDTO() {
         DiaryDTO _dto = DiaryDTO
                 .builder()
+                .id(id)
                 .title(title)
                 .content(content)
                 .writer(writer)
