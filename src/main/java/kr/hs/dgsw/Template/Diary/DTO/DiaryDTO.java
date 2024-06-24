@@ -1,6 +1,7 @@
 package kr.hs.dgsw.Template.Diary.DTO;
 
 import kr.hs.dgsw.Template.Diary.Entity.DiaryEntity;
+import kr.hs.dgsw.Template.Forecast.Enum.Weather;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,6 +18,7 @@ public class DiaryDTO {
     private String title;
     private String content;
     private String writer;
+    private Weather weather;
     private Integer likes;
     private LocalDateTime regDate, modDate;
 
@@ -27,6 +29,7 @@ public class DiaryDTO {
                 .title(title)
                 .content(content)
                 .writer(writer)
+                .weather(weather)
                 .likes(likes)
                 .build();
 

@@ -7,4 +7,7 @@ import java.util.List;
 public interface DiaryService {
     Long register(DiaryDTO dto);
     List<DiaryDTO> getList();
+    DiaryDTO get(Long id);
+    void modify(DiaryDTO dto);
+    void remove(Long id);
 }

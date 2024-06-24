@@ -8,12 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -34,5 +32,28 @@ public class DiaryController {
     public ResponseEntity<List<DiaryDTO>> getAll() {
         List<DiaryDTO> _list = diaryService.getList();
         return ResponseEntity.ok(_list);
+    }
+
+    @GetMapping()
+    public ResponseEntity<DiaryDTO> get(Long id) {
+        DiaryDTO _dto = diaryService.get(id);
+        if (_dto == null) {
+            return ResponseEntity.notFound().build();
+        }
+        else{
+            return ResponseEntity.ok(_dto);
+        }
+    }
+
+    @PutMapping
+    public ResponseEntity<String> modify(DiaryDTO _dto) {
+        diaryService.modify( _dto );
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping
+    public ResponseEntity<String> remove(Long id) {
+        diaryService.remove(id);
+        return ResponseEntity.ok().build();
     }
 }
