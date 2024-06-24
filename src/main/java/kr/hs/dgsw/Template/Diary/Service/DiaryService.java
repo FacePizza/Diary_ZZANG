@@ -9,7 +9,7 @@ public interface DiaryService {
     Long register(DiaryReq req);
     List<DiaryDTO> getList();
     DiaryDTO get(Long id);
-    void modify(DiaryDTO dto);
+    void modify(Long id,DiaryReq req);
     void remove(Long id);
     void like(Long id);
 }

@@ -47,9 +47,9 @@ public class DiaryController {
         }
     }
 
-    @PutMapping
-    public ResponseEntity<String> modify(DiaryDTO _dto) {
-        diaryService.modify( _dto );
+    @PutMapping("/{id}")
+    public ResponseEntity<String> modify(@PathVariable Long id, DiaryReq req) {
+        diaryService.modify(id , req );
         return ResponseEntity.ok().build();
     }
 
