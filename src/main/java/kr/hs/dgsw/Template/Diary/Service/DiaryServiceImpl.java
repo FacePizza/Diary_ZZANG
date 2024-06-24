@@ -36,14 +36,15 @@ public class DiaryServiceImpl implements DiaryService {
 
     @Override
     public void modify(Long id, DiaryReq req) {
-        Optional<DiaryEntity> _result = diaryRepository.findById(id);
-
-        if (_result.isPresent()) {
-            DiaryEntity _entity = _result.get();
-            _entity.changeTitle(req.getTitle());
-            _entity.changeContent(req.getContent());
-            diaryRepository.save(_entity);
-        }
+        DiaryEntity _entity = DiaryEntity.builder()
+                .id(id)
+                .title(req.getTitle())
+                .content(req.getContent())
+                .writer(req.getWriter())
+                .likes(req.getLikes())
+                .weather(req.getWeather())
+                .build();
+        diaryRepository.save(_entity);
     }
 
     @Override
